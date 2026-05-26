@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity Health - Portal de Operaciones Clínicas</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Premium Interactive Background Elements -->
+    <div class="bg-orbs" aria-hidden="true">
+        <span class="orb orb-a"></span>
+        <span class="orb orb-b"></span>
+        <span class="orb orb-c"></span>
+    </div>
+    <div class="grid-noise" aria-hidden="true"></div>
+    <div class="bg-grid-3d" aria-hidden="true"></div>
+    <div class="bg-shine" aria-hidden="true"></div>
+    <div class="bg-vignette" aria-hidden="true"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon"></div>
+                <div class="brand-text">
+                    <h2>Asclia</h2>
+                    <span>HEALTH OPS</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-tab="journey">
+                    <span class="btn-label">Flujo del Paciente</span>
+                </button>
+                <button class="nav-btn" data-tab="coworker">
+                    <span class="btn-label">Copiloto IA (Coworker)</span>
+                </button>
+                <button class="nav-btn" data-tab="interop">
+                    <span class="btn-label">Ingesta de Datos</span>
+                </button>
+                <button class="nav-btn" data-tab="audit">
+                    <span class="btn-label">Auditoría HIPAA</span>
+                </button>
+                <button class="nav-btn" data-tab="blueprint">
+                    <span class="btn-label">Plan de Arquitectura</span>
+                </button>
+            </nav>
+
+            <div class="compliance-footer">
+                <div class="compliance-badge">
+                    <span class="badge-dot"></span>
+                    CUMPLIMIENTO HIPAA & HITRUST
+                </div>
+                <div class="compliance-details">
+                    <span>Acceso Auditado y Registrado</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard View -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1 id="page-heading">Flujo del Paciente y Máquina de Estados</h1>
+                    <p id="page-subheading">Monitorea, valida y simula transiciones clínicas bajo reglas estrictas</p>
+                </div>
+                <div class="user-profile">
+                    <div class="clinician-info">
+                        <span class="clinician-name">Dra. Evelyn Harper, MD</span>
+                        <span class="clinician-role">Psiquiatra Principal</span>
+                    </div>
+                    <div class="avatar">EH</div>
+                </div>
+            </header>
+
+            <!-- Main Scrollable Dashboard Content -->
+            <div class="dashboard-content">
+                
+                <!-- TAB 1: Patient Journey -->
+                <section class="tab-pane active" id="tab-journey">
+                    <div class="split-layout">
+                        <!-- Patient Select Sidebar -->
+                        <div class="patient-selector-col">
+                            <h3 class="section-heading">Casos Clínicos Activos</h3>
+                            <div class="patient-list" id="patient-list-container">
+                                <!-- Dynamically loaded patient list cards -->
+                                <div class="loading-spinner">Cargando pacientes...</div>
+                            </div>
+                        </div>
+
+                        <!-- Focus Patient Details & State Machine View -->
+                        <div class="patient-details-col">
+                            <div class="card patient-focus-card" id="focus-patient-card">
+                                <div class="focus-patient-header">
+                                    <div>
+                                        <h2 id="focus-patient-name">Selecciona un Paciente</h2>
+                                        <p class="dob-badge">F. Nacimiento: <span id="focus-patient-dob">-</span> | ID: <span id="focus-patient-id">-</span></p>
+                                    </div>
+                                    <div class="risk-indicator" id="focus-patient-risk">
+                                        Sin Selección
+                                    </div>
+                                </div>
+
+                                <!-- Diagnostics Row -->
+                                <div class="diagnostics-bar">
+                                    <h4>Diagnósticos Clínicos FHIR:</h4>
+                                    <div class="condition-tags" id="focus-patient-conditions">
+                                        <!-- Tags render here -->
+                                        <span class="empty-tag">Ninguno</span>
+                                    </div>
+                                </div>
+
+                                <!-- State Timeline (State Machine visualizer) -->
+                                <div class="state-machine-container">
+                                    <h3 class="timeline-title">Reglas de Transición y Máquina de Estados Clínica</h3>
+                                    <div class="state-timeline" id="clinical-state-timeline">
+                                        <!-- States Render Here -->
+                                        <div class="state-node" data-state="Admisión">
+                                            <div class="node-circle">1</div>
+                                            <div class="node-label">Admisión</div>
+                                        </div>
+                                        <div class="state-node" data-state="Evaluación Clínica">
+                                            <div class="node-circle">2</div>
+                                            <div class="node-label">Evaluación</div>
+                                        </div>
+                                        <div class="state-node" data-state="Planificación de Tratamiento">
+                                            <div class="node-circle">3</div>
+                                            <div class="node-label">Planificación</div>
+                                        </div>
+                                        <div class="state-node" data-state="Terapia Activa">
+                                            <div class="node-circle">4</div>
+                                            <div class="node-label">Terapia Activa</div>
+                                        </div>
+                                        <div class="state-node" data-state="Intervención de Crisis">
+                                            <div class="node-circle">!</div>
+                                            <div class="node-label">Crisis</div>
+                                        </div>
+                                        <div class="state-node" data-state="Alta Médica">
+                                            <div class="node-circle">✓</div>
+                                            <div class="node-label">Alta Médica</div>
+                                        </div>
+                                    </div>
+                                    <div class="invariants-indicator">
+                                        <strong>Regla Invariante Activa:</strong> 
+                                        <span id="invariant-rule-text">Selecciona un paciente para ver las reglas.</span>
+                                    </div>
+                                </div>
+
+                                <!-- Context Notes Area for Reports -->
+                                <div class="report-notes-area">
+                                    <label for="report-clinical-notes">Anexar Contexto para el Reporte Clínico (Opcional):</label>
+                                    <textarea id="report-clinical-notes" rows="3" class="form-control" placeholder="Escribe aquí notas adicionales, directivas o contexto clínico que deseas anexar al informe PDF/HTML..."></textarea>
+                                </div>
+
+                                <!-- Control & Transitions Bar -->
+                                <div class="care-controls">
+                                    <div class="control-group">
+                                        <label for="transition-select">Transicionar Estado a:</label>
+                                        <select id="transition-select" class="form-control">
+                                            <option value="">-- Elige Estado Objetivo --</option>
+                                            <option value="Admisión">Admisión</option>
+                                            <option value="Evaluación Clínica">Evaluación Clínica</option>
+                                            <option value="Planificación de Tratamiento">Planificación de Tratamiento</option>
+                                            <option value="Terapia Activa">Terapia Activa</option>
+                                            <option value="Intervención de Crisis">Intervención de Crisis</option>
+                                            <option value="Alta Médica">Alta Médica</option>
+                                        </select>
+                                    </div>
+                                    <button class="action-btn" id="btn-trigger-transition">Solicitar Cambio de Estado</button>
+                                    <div class="export-actions">
+                                        <button class="secondary-btn" id="btn-export-html">Reporte HTML</button>
+                                        <button class="secondary-btn" id="btn-export-pdf">Descargar PDF EHR</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Override Modal / Alert Panel -->
+                            <div class="override-panel card hidden" id="override-container">
+                                <h3>Requiere Override Clínico (Autorización Médica)</h3>
+                                <p id="override-warning-message">La transición viola las restricciones normales del flujo de trabajo.</p>
+                                <div class="form-group">
+                                    <label for="override-reason">Proporciona Justificación Clínica (Auditado por HIPAA):</label>
+                                    <input type="text" id="override-reason" placeholder="Ej. Evaluación psiquiátrica de emergencia realizada" class="form-control">
+                                </div>
+                                <div class="modal-buttons">
+                                    <button class="action-btn danger" id="btn-submit-override">Enviar Auditoría y Forzar Estado</button>
+                                    <button class="secondary-btn" id="btn-cancel-override">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 2: AI Coworker Ops -->
+                <section class="tab-pane" id="tab-coworker">
+                    <div class="agent-ops-grid">
+                        <div class="card input-card">
+                            <h3>Transcripción Clínico / Nota de Sesión</h3>
+                            <p class="card-desc">Simula notas de ingreso o reportes del paciente. El copiloto IA procesará la información, cargará la memoria, evaluará barreras de seguridad y tomará decisiones autónomas.</p>
+                            
+                            <div class="form-group">
+                                <label for="agent-trigger-note">Transcripción de la Sesión o Reporte de Ingreso:</label>
+                                <textarea id="agent-trigger-note" rows="8" class="form-control font-mono">El paciente está mostrando signos de ideación suicida crítica y privación extrema de sueño. Dice: 'ya no puedo aguantar más y quiero dejar el tratamiento'.</textarea>
+                            </div>
+                            
+                            <div class="agent-actions-row">
+                                <button class="action-btn" id="btn-run-agent">Ejecutar Agente Evaluador</button>
+                                <button class="secondary-btn" id="btn-fill-safe-note">Cargar Nota de Sesión Segura</button>
+                            </div>
+                        </div>
+
+                        <div class="card trace-card">
+                            <h3>Consola de Razonamiento IA (Trazabilidad)</h3>
+                            <p class="card-desc">Trazabilidad de nivel de producción que muestra el flujo del agente, herramientas usadas, memoria clínica e iteraciones de seguridad.</p>
+                            
+                            <div class="terminal-console" id="agent-console">
+                                <div class="terminal-line placeholder">// Presiona 'Ejecutar Agente Evaluador' para inspeccionar las trazas del modelo.</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 3: Data Ingestion (HL7 / FHIR) -->
+                <section class="tab-pane" id="tab-interop">
+                    <div class="interop-grid">
+                        <!-- HL7 Panel -->
+                        <div class="card">
+                            <h3>Ingesta de Mensajería HL7 v2</h3>
+                            <p class="card-desc">Envía mensajes crudos de mensajería hospitalaria. El sistema los procesará, los convertirá a FHIR y actualizará los registros clínicos de forma segura.</p>
+                            
+                            <div class="form-group">
+                                <label for="raw-hl7-input">Mensaje HL7 (ADT de Admisión u ORU de Resultados):</label>
+                                <textarea id="raw-hl7-input" rows="12" class="form-control font-mono">MSH|^~\&|EHR_SYSTEM|HOSPITAL_A|ANTIGRAVITY_APP|SECURE_LAKE|20260526090000||ADT^A04|MSG000921|P|2.3
+PID|1||PAT-004||Skywalker^Luke||19770525|M|||123 Death Star Way|||||||
+OBX|1|TX|F32.1^MDD severity^LN||Moderate depressive episode|N||A|
+OBX|2|TX|F41.1^Generalized anxiety^LN||Severe anxiety escalation|H||A|</textarea>
+                            </div>
+                            
+                            <button class="action-btn" id="btn-ingest-hl7">Procesar e Ingerir Mensaje HL7</button>
+                        </div>
+
+                        <!-- FHIR JSON Panel -->
+                        <div class="card">
+                            <h3>Flujo de Datos Clínicos Traducidos</h3>
+                            <p class="card-desc">Visualización en tiempo real del mapeo de datos entre el mensaje HL7 plano y la estructura del recurso Patient en FHIR.</p>
+                            
+                            <div class="fhir-flow-container">
+                                <div class="flow-step">
+                                    <div class="flow-header">Segmento HL7 de Entrada</div>
+                                    <div class="flow-code" id="hl7-segment-preview">PID | Skywalker^Luke | 1977-05-25</div>
+                                </div>
+                                <div class="flow-arrow">⬇ Capa de Transformación y Parsing</div>
+                                <div class="flow-step">
+                                    <div class="flow-header">Recurso FHIR Generado (Esquema JSON)</div>
+                                    <pre class="flow-code fhir-json" id="fhir-json-preview">{
+  "resourceType": "Patient",
+  "name": [{ "text": "Luke Skywalker" }],
+  "gender": "male"
+}</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 4: HIPAA Audit Logs -->
+                <section class="tab-pane" id="tab-audit">
+                    <div class="card audit-card">
+                        <div class="card-header-flex">
+                            <div>
+                                <h3>Libro de Auditoría y Control de Acceso HIPAA</h3>
+                                <p class="card-desc">Historial cronológico inmutable. Satisface los requerimientos de auditoría de la norma 45 CFR § 164.312(b).</p>
+                            </div>
+                            <button class="secondary-btn" id="btn-refresh-audit">Actualizar Registro</button>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table class="audit-table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha y Hora</th>
+                                        <th>Tipo de Evento</th>
+                                        <th>Sujeto (ID Paciente)</th>
+                                        <th>Operador / Sistema</th>
+                                        <th>Descripción del Evento</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="audit-table-body">
+                                    <!-- Audit logs load dynamically -->
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">Cargando registros...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 5: System Architecture Blueprint -->
+                <section class="tab-pane" id="tab-blueprint">
+                    <div class="blueprint-container">
+                        <div class="card blueprint-intro">
+                            <h2>Arquitectura de Producción: Escalamiento y Cumplimiento</h2>
+                            <p>Esta sección detalla cómo escala el sistema clínico a nivel empresarial utilizando **Node.js, TypeScript, Supabase, Azure Databricks y Cosmos DB** asegurando el cumplimiento HIPAA en producción.</p>
+                        </div>
+
+                        <!-- Technical Grid -->
+                        <div class="arch-grid">
+                            <div class="card arch-component">
+                                <h3>API Gateway Node.js & TypeScript</h3>
+                                <p>Puerta de enlace principal. Ejecuta la validación estricta de esquemas usando **Zod** y gestiona el aislamiento lógico por inquilinos (Tenants) para garantizar la seguridad de los datos PHI.</p>
+                                <span class="badge tech">TypeScript</span>
+                            </div>
+
+                            <div class="card arch-component">
+                                <h3>Supabase (PostgreSQL)</h3>
+                                <p>Base de datos relacional transaccional. Aloja el registro de pacientes, planes de cuidado y estados. Implementa Políticas de Seguridad a Nivel de Fila (RLS) para blindar el acceso a los datos de salud.</p>
+                                <span class="badge tech">Supabase RLS</span>
+                            </div>
+
+                            <div class="card arch-component">
+                                <h3>Azure Databricks Data Lake</h3>
+                                <p>Capa analítica y simulación a gran escala. Lee el flujo continuo de Cosmos DB mediante Structured Streaming para entrenar modelos predictivos de riesgo y generar reportes de salud poblacional.</p>
+                                <span class="badge tech">Databricks Delta Lake</span>
+                            </div>
+
+                            <div class="card arch-component">
+                                <h3>Azure Cosmos DB</h3>
+                                <p>Base de datos NoSQL de alta velocidad. Ingiere streams de eventos clínicos (mensajería HL7 cruda, transcripciones de voz continuas y logs de telemetría médica) sirviendo como histórico inmutable.</p>
+                                <span class="badge tech">Cosmos DB</span>
+                            </div>
+                        </div>
+
+                        <!-- State & Data compliance diagram -->
+                        <div class="card flow-diagram-card">
+                            <h3>Flujo de Datos, Ingesta y Validación HIPAA</h3>
+                            <p class="card-desc">Visualización de la canalización de datos desde el origen clínico hasta el almacenamiento final auditado.</p>
+                            
+                            <div class="flow-charts">
+                                <div class="chart-step">
+                                    <div class="chart-box red-glow">Ingesta HL7 / Webhook</div>
+                                    <div class="chart-label">Mensajería hospitalaria entrante</div>
+                                </div>
+                                <div class="chart-line">➔</div>
+                                <div class="chart-step">
+                                    <div class="chart-box blue-glow">Filtro de Ingesta HIPAA</div>
+                                    <div class="chart-label">Valida tokens JWT y registra acceso PHI</div>
+                                </div>
+                                <div class="chart-line">➔</div>
+                                <div class="chart-step">
+                                    <div class="chart-box purple-glow">Validador de Máquina de Estados</div>
+                                    <div class="chart-label">Verifica reglas e invariants de riesgo</div>
+                                </div>
+                                <div class="chart-line">➔</div>
+                                <div class="chart-step">
+                                    <div class="chart-box green-glow">Supabase (Postgres)</div>
+                                    <div class="chart-label">Actualiza base de datos e inscribe auditoría</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Load anime.js for entry animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
